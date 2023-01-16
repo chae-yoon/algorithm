@@ -1,6 +1,6 @@
-N = int(input(''))
-results = []
+T = int(input())
 
-for i in range(N):
-    a, b = map(int, input('').split(' '))
-    print(a+b)
+for t in range(T):
+    a, b = map(int, input().split())
+
+    print(a + b)
