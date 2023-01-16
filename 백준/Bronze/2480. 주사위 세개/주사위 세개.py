@@ -1,23 +1,20 @@
-a, b, c = map(int, input('').split(' '))
+dice = list(map(int, input().split()))
+set_dice = set(dice)
 
-list_variable = [a, b, c]
-dict_variable = {}
+if len(set_dice) == 1:
+    price = 10000 + set_dice.pop() * 1000
 
-for num in list_variable:
-    if num in dict_variable:
-        dict_variable[num] += 1
-    else:
-        dict_variable[num] = 1
+elif len(set_dice) == 3:
+    dice.sort()
+    price = dice.pop() * 100
 
-sort_dict = sorted(dict_variable)
-
-reverse_key_value = {v:k for k, v in dict_variable.items()}
-
-if len(dict_variable) == 1:
-    price = 10000 + reverse_key_value.get(3) * 1000
-elif len(dict_variable) == 2:
-    price = 1000 + reverse_key_value.get(2) * 100
 else:
-    price = sort_dict.pop() * 100
+    dice.sort()
+    
+    if dice[0] == dice[1]:
+        price = 1000 + dice[0] * 100
+
+    else:
+        price = 1000 + dice[1] * 100
 
 print(price)
