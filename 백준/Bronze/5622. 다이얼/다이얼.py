@@ -1,24 +1,18 @@
-import sys
+sentence = input()
 
-num_dict = {
-    2: ['A', 'B', 'C'],
-    3: ['D', 'E', 'F'],
-    4: ['G', 'H', 'I'],
-    5: ['J', 'K', 'L'],
-    6: ['M', 'N', 'O'],
-    7: ['P', 'Q', 'R', 'S'],
-    8: ['T', 'U', 'V'],
-    9: ['W', 'X', 'Y', 'Z'],
-}
+dialog = {}
+start, result = 65, 0
 
-min_time = 0
-word = sys.stdin.readline().rstrip()
+for key in range(2, 10):
+    jump = 4 if key == 7 or key == 9 else 3
+    dialog[key] = dialog.get(key, list(map(chr, range(start, start + jump))))
+    start += jump
 
-for c in word:
-    for k, v in num_dict.items():
-        if c in v:
-            min_time += k
+for char in sentence:
+    for key, value in dialog.items():
+        if char in value:
+            result += key
 
-min_time += len(word)
+result += len(sentence)
 
-print(min_time)
+print(result)
