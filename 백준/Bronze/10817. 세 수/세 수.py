@@ -1,6 +1,5 @@
-import sys, heapq
+import sys
 
 nums = list(map(int, sys.stdin.readline().split()))
-heapq.heapify(nums)
-heapq.heappop(nums)
-print(heapq.heappop(nums))
+nums.sort()
+print(nums[1])
