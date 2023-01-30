@@ -1,6 +1,4 @@
 import sys
 
-N = int(sys.stdin.readline().strip())
-
-for i in range(N):
-    print('*' * (i+1))
+for n in range(1, int(sys.stdin.readline().rstrip()) + 1):
+    print('*' * n)
