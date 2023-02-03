@@ -1,24 +1,20 @@
 T = int(input())
-scores = ['A+', 'A0', 'A-', 'B+', 'B0', 'B-', 'C+', 'C0', 'C-', 'D0']
+credit = ['A+', 'A0', 'A-', 'B+', 'B0', 'B-', 'C+', 'C0', 'C-', 'D0']
 
-for test_case in range(1, T+1):
-    students, K = map(int, input().split())
-    score = {}
+for test_case in range(1, T + 1):
+    N, K = map(int, input().split())
+    scores = {}
 
-    for student in range(1, students+1):
-        middle_exam, last_exam, assignment = map(int, input().split())
-        result = middle_exam * .35 + last_exam * .45 + assignment * .2
-
-        score[student] = result
-        
-    sort_score = sorted(score, key= lambda x: score[x], reverse=True)
-    K_score = sort_score.index(K)
-
-    num = {k: list(range(i*(students//10)+1, i*(students//10)+students//10+1)) for i, k in enumerate(scores) }
-
-    for k,v in num.items():
-        if K_score+1 in v:
+    for n in range(N):
+        m_exam, f_exam, assignment = map(int, input().split())
+        scores[n+1] = m_exam*.35 + f_exam*.45 + assignment*.2
+    
+    sort_scores = sorted(scores, key= lambda x:scores[x], reverse=True)
+    K_index = sort_scores.index(K)
+    N_credit = {k: list(range(i*N//10, i*N//10+N//10)) for i, k in enumerate(credit)}
+    
+    for k, v in N_credit.items():
+        if K_index in v:
             result = k
-            break
 
     print(f'#{test_case} {result}')
