@@ -1,0 +1,10 @@
+-- 코드를 입력하세요
+SELECT MCDP_CD '진료과코드', COUNT(*) '5월예약건수'
+FROM (
+    SELECT * FROM APPOINTMENT
+    WHERE
+        YEAR(APNT_YMD) = 2022
+        AND MONTH(APNT_YMD) = 5
+) AS t
+GROUP BY MCDP_CD
+ORDER BY COUNT(*), MCDP_CD;
